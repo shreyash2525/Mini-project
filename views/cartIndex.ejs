@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+</head>
+<body> 
+    <section>
+        <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark mb-4">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="#">Pizzeria</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="/pizzas">All Pizzas</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/pizzas/cart">Your Cart</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" href="/pizzas/veg">Veg Pizzas</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" href="/pizzas/nonveg">Non-Veg Pizzas</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </section>
+
+            
+    <section class="h-100 h-custom">
+      <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-12">
+            <div class="card card-registration card-registration-2" style="border-radius: 15px;">
+              <div class="card-body p-0">
+                <div class="row g-0">
+                  <div class="col-lg-8">
+                    <div class="p-5">
+                      <div class="d-flex justify-content-between align-items-center mb-5">
+                        <h1 class="display-4">Pizza Cart</h1>
+                        <h6 class="mb-0 text-muted">
+                          <%= items.length %> 
+                          <% if(items.length === 1){ %>
+                            item
+                          <% }else{ %>
+                            items
+                          <% } %>         
+                        </h6>
+                      </div>
+                      <hr class="my-4">
+            
+                      <% for(let item of items){ %>
+                        <div class="row mb-4 d-flex justify-content-between align-items-center">
+                          <div class="col-md-2 col-lg-2 col-xl-2">
+                            <img src="<%= %> " alt="">
+                          </div>
+                          <div class="col-md-3 col-lg-3 col-xl-3">
+                            <h6 class="text-black mb-0"><%= item.name %> </h6>
+                            <h6 class="text-muted"><%= item.type %> </h6>
+                          </div>
+
+                          <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                            <button class="btn btn-link px-2"
+                              onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                              <i class="fas fa-minus"></i>
+                            </button> 
+                            
+                            <input id="form1" min="1" name="quantity" value="1" type="number"
+                              class="form-control form-control-sm" />
+                                          
+                            <button class="btn btn-link px-2"
+                              onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                              <i class="fas fa-plus"></i>
+                            </button> 
+                            
+                          </div>
+                          <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                            <h6 class="mb-0"><%= item.price %> </h6>
+                          </div>
+                          <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                            <form action="/pizzas/<%= item._id %>/cart?_method=DELETE" method="POST">
+                                  <button class='btn btn-danger'><i class="fas fa-times"></i></button>
+                              </li>
+                            </form>
+                            <!-- <a href="#!" class="text-muted"><i class="fas fa-times"></i></a> -->
+                          </div>
+                        </div>
+                        <hr class="my-4">
+                     <% } %>
+                    
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>  
+          </div>
+        </div>
+      </div>
+    </section>   
+    <div class="container">
+      <a href="/pizzas/checkout" class="btn btn-lg btn-success">Checkout</a>
+      <a href="/pizzas" class="btn btn-lg btn-primary">All pizzas</a>
+    </div>
+    
+            
+    
+            
+
+    
+
+   <!-- <footer class="footer bg-dark py-3 mt-auto">
+        <div class="container">
+            <span class="text-muted">&copy; Pizza 2022</span>
+        </div>
+    </footer>  -->
+    
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script> 
+
+</body>
+</html> 

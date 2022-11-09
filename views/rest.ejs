@@ -1,0 +1,25 @@
+<div class="col-md-4">
+    <div class="card text-bg-secondary mb-3" style="width: 18rem;">
+       <!-- <img src="" class="card-img-top" alt="image"> -->
+        <div class="card-body">
+          <h5 class="card-title"> <%=pizza.name%></h5>
+          <p class="card-text"> <%= pizza.description %> </p>
+          <a href="/pizzas/<%= pizza._id %>" class="btn btn-sm btn-info">View Pizza</a>
+          <a href="/pizzas/<%= pizza._id %>/cart" class="btn btn-sm btn-success">Add to cart</a>
+        </div>
+    </div>
+</div>
+
+
+<div class="card mb-3" style="width: 18rem;">
+  <!-- <ul class="list-group list-group-flush"> -->
+
+      <% for(let item of items){ %>
+          <form action="/pizzas/<%= item._id %>/cart?_method=DELETE" method="POST">
+              <li><%= item.name %> -  <%= item.price %>
+                  <button class='btn-close ml-3'></button>
+              </li>
+              
+          </form>
+      <% } %>
+</div> 
